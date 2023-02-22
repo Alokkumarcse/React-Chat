@@ -195,15 +195,15 @@
     // Todo: styling for ChatPanel component
     .chat__panel {
       flex: 2;
-      background-color: rgb(124, 124, 122);
+      background-color: #333335;
 
       // todo: styling for chat top panel part => user info
       .chat__top--panel {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        height: 50px;
         padding: 10px;
-        border-bottom: 1px solid gainsboro;
 
         .top__panel--left {
           display: flex;
@@ -226,9 +226,13 @@
           display: flex;
           align-items: center;
           gap:10px;
-          img {
+          i{ 
+            color:#ddddf7;
             cursor: pointer;
+            font-size: 20px;
+            padding: 5px;
           }
+          
         }
       }
 
@@ -236,16 +240,98 @@
       .messages {
         background-color: #ddddf7;
         padding: 10px;
-        
+        height: calc(100% - 160px);
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+            width: 10px;
+            background-color: #ddddf7;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color:rgb(71, 69, 121);
+          min-height: 30px;
+          height: 40px;
+          border-radius: 5px;
+        }
+
+        .message {
+          display: flex;
+          gap:20px;
+          margin-bottom: 20px;
+
+          .message__info{
+            display: flex;
+            flex-direction: column;
+            color:gray;
+            font-weight: 300;
+            img{
+              height: 40px;
+              width: 40px;
+              border-radius: 50%;
+              object-fit: cover;
+            }
+          }
+
+          .message__content{
+            display: flex;
+
+            p{
+              background-color: #c7c7d4;
+              padding: 10px;
+              border-radius: 0 10px 10px 10px;
+            }
+
+          }
+        }
+       
+
       }
 
 
       // todo: styling for chat panel bottom part => message sending part
+      .input__box{
+        height: 50px;
+        padding: 10px;
+        background-color: #333335;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
+        input{
+          width: 100%;
+          padding: 10px;
+          background-color: transparent;
+          outline: none;
+          font-size: 17px;
+          border: none;
+          color:white;
+          &::placeholder{
+            color:#c7c7d4;
+          }
+        }
+
+        .send{
+          display: flex;
+          align-items: center;
+          gap:10px;
+
+          i{ 
+            font-size: 30px;
+            color:white;
+            cursor: pointer;
+          }
+
+          button {
+            padding: 7px 15px;
+            background-color: #88a2fa;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+          }
+        }
+      }
     }
   }
 }
-
-/**
-* ! styling for
-*/

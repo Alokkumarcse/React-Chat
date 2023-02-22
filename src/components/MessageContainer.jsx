@@ -2,11 +2,9 @@ import React from "react";
 
 import Message from "./Message";
 
-const Messages = () => {
+const MessageContainer = () => {
 	return (
 		<div className="messages">
-			<Message />
-			<Message />
 			<Message />
 			<Message />
 			<Message />
@@ -21,4 +19,4 @@ const Messages = () => {
 	);
 };
 
-export default Messages;
+export default MessageContainer;

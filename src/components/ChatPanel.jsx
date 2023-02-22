@@ -1,11 +1,8 @@
 import React from "react";
 
 import pic from "../images/profile pic.jpg";
-import cam from "../images/cam.png";
-import add from "../images/add.png";
-import more from "../images/more.png";
 
-import Messages from "./Messages";
+import MessageContainer from "./MessageContainer";
 import InputBox from "./InputBox";
 
 const ChatPanel = () => {
@@ -18,14 +15,14 @@ const ChatPanel = () => {
 					<span>Alok</span>
 				</div>
 				<div className="top__panel--right">
-					<i class="fa-solid fa-phone"></i>
-					<i class="fa-solid fa-video"></i>
-					<i class="fa-solid fa-user-plus"></i>
-					<i class="fa-solid fa-ellipsis-vertical"></i>
+					<i className="fa-solid fa-phone"></i>
+					<i className="fa-solid fa-video"></i>
+					<i className="fa-solid fa-user-plus"></i>
+					<i className="fa-solid fa-ellipsis-vertical"></i>
 				</div>
 			</div>
 			{/* Middle part of Chat panel => all chat message*/}
-			<Messages />
+			<MessageContainer />
 			{/* Bottom part of ChatPanel => message input box */}
 			<InputBox />
 		</div>
