@@ -1,0 +1,251 @@
+
+/**
+* Todo: styling for Login and Register From component
+**/
+.form__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: gray;
+
+  .form__wrapper {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 10px;
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      font-style: italic;
+      padding-bottom: 7px;
+    }
+
+    .title {
+      font-size: 15px;
+      font-weight: 500;
+      padding-bottom: 10px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      input {
+        width: 250px;
+        padding: 15px;
+        border: none;
+        border-bottom: 1px solid gainsboro;
+        &::placeholder {
+          color: rbg(200, 200, 200);
+          font-size: 15px;
+        }
+      }
+
+      button {
+        margin: 5px 0;
+        cursor: pointer;
+        padding: 10px;
+        font-weight: bold;
+        font-size: 15px;
+        background-color: rgb(89, 197, 233);
+        border: none;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+/**
+* ! styling for Home page component
+**/
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a7bcff;
+  height: 100vh;
+
+  .container {
+    border: 2px solid lightblue;
+    display: flex;
+    justify-content: center;
+    height: 90%;
+    width: 70%;
+    border-radius: 10px;
+    overflow: hidden;
+    // Todo: styling for SidebarPanel component 
+    .sidebar__panel{
+      position: relative;
+      overflow-y: scroll;
+      &::-webkit-scrollbar{
+        display: none;
+      }
+      flex: 1;
+      background-color:rgb(71, 69, 121);
+
+      // todo: styling for SidebarPanel => Navbar component
+      .navbar {
+        position: sticky;
+        top:0;
+        left: 0;
+        
+        height: 40px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(47, 45, 82);
+        color: white;
+        padding: 10px;
+        .logo {
+          display: flex;
+          align-items: center;
+          i{font-size: 30px;}
+        }
+        .user {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          column-gap: 15px;
+          img {
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+          span {
+            font-size: 17px;
+            font-style: italic;
+            text-shadow: 1px 1px 0 #a7bcff;
+          }
+          button {
+            border: none;
+            padding: 5px;
+            background-color: rgb(240, 132, 128);
+            border-radius: 10px;
+            cursor: pointer;
+          }
+        }
+      }
+      // todo: styling for SidebarPanel => SearchBox Component
+      .search__box {
+        border-bottom:1px solid gray;
+        .search__form {
+          display: flex;
+          align-items: center;
+          i{
+            padding-left: 10px;
+            font-size: 16px;
+            color: rgba(197, 189, 189, 0.582);
+          }
+          input{
+            padding: 10px;
+            border: none;
+            background-color: inherit;
+            outline: none;
+            font-size: 16px;
+            color: white;
+            &::placeholder{
+              color: rgba(197, 189, 189, 0.582);
+            }
+          }
+        }
+      }
+
+      .user__chat{
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        gap: 10px;
+        color: white;
+        cursor: pointer;
+        &:hover{
+          background-color: #2f2d52;
+        }
+
+        img{
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          object-fit: cover; 
+        }
+
+        .chat__info{
+          span {
+            font-size: 18px;
+            font-weight: 500;
+            font-style: italic;
+          }
+          p{
+            margin: 0;
+            font-size: 14px;
+            color: rgb(201, 210, 212);
+          }
+        }
+      }
+      
+    }
+
+    // Todo: styling for ChatPanel component
+    .chat__panel {
+      flex: 2;
+      background-color: rgb(124, 124, 122);
+
+      // todo: styling for chat top panel part => user info
+      .chat__top--panel {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        border-bottom: 1px solid gainsboro;
+
+        .top__panel--left {
+          display: flex;
+          align-items: center;
+          gap:10px;
+          color: lightgray;
+          img{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+          span{
+            font-weight: 500;
+            font-size: 18px;
+          }
+        }
+
+        .top__panel--right{
+          display: flex;
+          align-items: center;
+          gap:10px;
+          img {
+            cursor: pointer;
+          }
+        }
+      }
+
+      // todo: styling for chat panel middle part => all chat texts
+      .messages {
+        background-color: #ddddf7;
+        padding: 10px;
+        
+      }
+
+
+      // todo: styling for chat panel bottom part => message sending part
+
+    }
+  }
+}
+
+/**
+* ! styling for
+*/
