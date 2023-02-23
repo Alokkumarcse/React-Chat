@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import {auth} from "../firebase";
+import { auth } from "../firebase";
 
 import pics from "../images/addAvatar.png";
 
 const Register = () => {
+	const [error, setError] = useState("false");
 	//handle form submit
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault(); // prevent page refresh when click on submit button
 		const displayName = e.target[0].value;
 		const email = e.target[1].value;
@@ -15,18 +16,11 @@ const Register = () => {
 		const file = e.target[3].file[0];
 
 		// create new user using email and password
-		const auth = getAuth();
-		createUserWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
-				// Signed in
-				const user = userCredential.user;
-				// ...
-			})
-			.catch((error) => {
-				const errorCode = error.code;
-				const errorMessage = error.message;
-				// ..
-			});
+		try {
+			const res = await createUserWithEmailAndPassword(auth, email, password);
+		} catch (error) {
+			setError(true);
+		}
 	};
 
 	return (
@@ -56,6 +50,7 @@ const Register = () => {
 						<span>Choose profile picture</span>
 					</label>
 					<button type="submit">Sign Up</button>
+					{error && <span>something went wrong!!</span>}
 				</form>
 				{/* form footer section */}
 				<p>You do have an account? Login</p>

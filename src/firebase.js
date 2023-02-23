@@ -2,10 +2,10 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 // using dotenv to hide some data
-import dotenv from "dotenv";
-dotenv.config();
-const apiKey = process.env.REACT_APP_API_KEY;
-console.log(apiKey);
+// import dotenv from "dotenv";
+// dotenv.config();
+// const apiKey = process.env.REACT_APP_API_KEY;
+// console.log(apiKey);
 
 const firebaseConfig = {
 	apiKey: "AIzaSyBZFECBjjZtpzKI6oQ9q6VONGprQfvzPTE",
