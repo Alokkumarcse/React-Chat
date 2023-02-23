@@ -3,12 +3,6 @@ import { getAuth } from "firebase/auth";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
-// using dotenv to hide some data
-// import dotenv from "dotenv";
-// dotenv.config();
-// const apiKey = process.env.REACT_APP_API_KEY;
-// console.log(apiKey);
-
 const firebaseConfig = {
 	apiKey: "AIzaSyCJDPKYQJhJVZ3kbADxSycJ8_bVIYOBT8I",
 	authDomain: "react-chat-app-e2cd2.firebaseapp.com",

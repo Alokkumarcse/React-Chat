@@ -6,7 +6,7 @@ import { auth, storage, db } from "../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import pics from "../images/addAvatar.png";
 
@@ -47,7 +47,7 @@ const Register = () => {
 							photoURL: downloadURL,
 						});
 						// add userChat in sidebar
-						// await setDoc(doc(db, "userChats", res.user), {});
+						await setDoc(doc(db, "userChats", res.user.uid), {});
 						// after successfully register/login than goto homepage
 						navigate("/");
 					});
@@ -89,7 +89,9 @@ const Register = () => {
 					{error && <span>Something want wrong!!</span>}
 				</form>
 				{/* form footer section */}
-				<p>You do have an account? Login</p>
+				<p>
+					You do have an account? <Link to="/login">Login</Link>
+				</p>
 			</div>
 		</div>
 	);
