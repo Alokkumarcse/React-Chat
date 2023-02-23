@@ -4,7 +4,7 @@ import Message from "./Message";
 
 const MessageContainer = () => {
 	return (
-		<div className="messages">
+		<div className="message__container">
 			<Message />
 			<Message />
 			<Message />
