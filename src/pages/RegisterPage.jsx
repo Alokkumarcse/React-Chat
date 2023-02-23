@@ -1,25 +1,68 @@
 import React, { useState } from "react";
 
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth, storage, db } from "../firebase";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
 
 import pics from "../images/addAvatar.png";
 
 const Register = () => {
-	const [error, setError] = useState("false");
+	const [error, setError] = useState(false);
+	const [errorMessage, setErrorMessage] = useState("");
+
 	//handle form submit
 	const handleSubmit = async (e) => {
 		e.preventDefault(); // prevent page refresh when click on submit button
 		const displayName = e.target[0].value;
 		const email = e.target[1].value;
 		const password = e.target[2].value;
-		const file = e.target[3].file[0];
+		const file = e.target[3].files[0];
 
-		// create new user using email and password
+		// try {
+		// 	createUserWithEmailAndPassword(auth, email, password)
+		// 		.then((userCredential) => {
+		// 			const user = userCredential.user;
+		// 			console.log(user);
+		// 		})
+		// 		.catch((error) => {
+		// 			console.log(error.message);
+		// 		});
+		// } catch (error) {
+		// 	console.log(error.message);
+		// }
+
 		try {
+			// create new user using email and password and uploading profile picture
 			const res = await createUserWithEmailAndPassword(auth, email, password);
+			// upload user photo and update user name & photo
+			const storageRef = ref(storage, displayName);
+			const uploadTask = uploadBytesResumable(storageRef, file);
+			uploadTask.on(
+				(error) => {
+					setError(true);
+				},
+				() => {
+					getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+						await updateProfile(res.user, {
+							displayName,
+							photoURL: downloadURL,
+						});
+						// store current user details in db
+						await setDoc(doc(db, "users", res.user.uid), {
+							uid: res.user.uid,
+							displayName,
+							email,
+							photoURL: downloadURL,
+						});
+						// add userChat in sidebar
+						await setDoc(doc(db, "userChats", res.user), {});
+					});
+				}
+			);
 		} catch (error) {
 			setError(true);
+			setErrorMessage(error.message);
 		}
 	};
 
@@ -50,7 +93,7 @@ const Register = () => {
 						<span>Choose profile picture</span>
 					</label>
 					<button type="submit">Sign Up</button>
-					{error && <span>something went wrong!!</span>}
+					{error && <span>{errorMessage}</span>}
 				</form>
 				{/* form footer section */}
 				<p>You do have an account? Login</p>
