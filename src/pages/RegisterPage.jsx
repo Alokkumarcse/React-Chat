@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 
+import pic from "../images/profile pic.jpg";
+
 import { auth, storage, db } from "../firebase";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 import pics from "../images/addAvatar.png";
 
 const Register = () => {
 	const [error, setError] = useState(false);
 	const [errorMessage, setErrorMessage] = useState("");
+	const navigate = useNavigate();
 
 	//handle form submit
 	const handleSubmit = async (e) => {
@@ -17,20 +21,7 @@ const Register = () => {
 		const displayName = e.target[0].value;
 		const email = e.target[1].value;
 		const password = e.target[2].value;
-		const file = e.target[3].files[0];
-
-		// try {
-		// 	createUserWithEmailAndPassword(auth, email, password)
-		// 		.then((userCredential) => {
-		// 			const user = userCredential.user;
-		// 			console.log(user);
-		// 		})
-		// 		.catch((error) => {
-		// 			console.log(error.message);
-		// 		});
-		// } catch (error) {
-		// 	console.log(error.message);
-		// }
+		const file = e.target[3].files[0] || pic;
 
 		try {
 			// create new user using email and password and uploading profile picture
@@ -56,13 +47,15 @@ const Register = () => {
 							photoURL: downloadURL,
 						});
 						// add userChat in sidebar
-						await setDoc(doc(db, "userChats", res.user), {});
+						// await setDoc(doc(db, "userChats", res.user), {});
+						// after successfully register/login than goto homepage
+						navigate("/");
 					});
 				}
 			);
 		} catch (error) {
 			setError(true);
-			setErrorMessage(error.message);
+			console.log(errorMessage);
 		}
 	};
 
@@ -93,7 +86,7 @@ const Register = () => {
 						<span>Choose profile picture</span>
 					</label>
 					<button type="submit">Sign Up</button>
-					{error && <span>{errorMessage}</span>}
+					{error && <span>Something want wrong!!</span>}
 				</form>
 				{/* form footer section */}
 				<p>You do have an account? Login</p>
