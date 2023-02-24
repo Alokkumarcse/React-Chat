@@ -30,21 +30,24 @@ const ChatContacts = () => {
 		dispatch({ type: "CHANGE_USER", payload: userDetails });
 	};
 
-	console.log(Object.entries(chats));
 	return (
 		<div>
-			{Object.entries(chats)?.map((chat) => (
-				<div
-					className="user__chat"
-					key={chat[0]}
-					onClick={() => handleSelect(chat[1].userInfo)}
-				>
-					<div className="chat__info">
-						<span>{chat[1].userInfo.displayName}</span>
-						<p>{chat[1].userInfo.lastMessage?.text}</p>
+			{/* show the contact sorted on the basis of latest message */}
+			{Object.entries(chats)
+				?.sort((a, b) => b[1].date - a[1].date)
+				.map((chat) => (
+					<div
+						className="user__chat"
+						key={chat[0]}
+						onClick={() => handleSelect(chat[1].userInfo)}
+					>
+						<img src={chat[1].userInfo.photoURL} alt="" />
+						<div className="chat__info">
+							<span>{chat[1].userInfo?.displayName}</span>
+							<p>{chat[1].lastMessage?.text}</p>
+						</div>
 					</div>
-				</div>
-			))}
+				))}
 		</div>
 	);
 };
