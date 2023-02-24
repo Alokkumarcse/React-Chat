@@ -5,7 +5,6 @@ import { auth } from "../firebase";
 
 const Login = () => {
 	const [error, setError] = useState(false);
-	const [errorMessage, setErrorMessage] = useState("");
 	const navigate = useNavigate();
 
 	//handle form submit
@@ -19,8 +18,7 @@ const Login = () => {
 			navigate("/");
 		} catch (error) {
 			setError(true);
-			console.log(error.message);
-			console.log(errorMessage);
+			// console.log(error.message);
 		}
 	};
 

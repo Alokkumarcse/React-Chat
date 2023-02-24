@@ -13,8 +13,6 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 
-import pic from "../images/profile pic.jpg";
-
 const Search = () => {
 	const [userName, setUserName] = useState("");
 	const [user, setUser] = useState(null);

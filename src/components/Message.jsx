@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useEffect } from "react";
 
-import pic from "../images/profile pic.jpg";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
 
@@ -8,8 +7,15 @@ const Message = ({ message }) => {
 	const { currentUser } = useContext(AuthContext);
 	const { data } = useContext(ChatContext);
 
+	// scroll to latest message when user is open
+	const ref = useRef();
+	useEffect(() => {
+		ref.current?.scrollIntoView({ behavior: "smooth" });
+	}, [message]);
+
 	return (
 		<div
+			ref={ref}
 			className={`message ${message.senderId === currentUser.uid && "owner"}`}
 		>
 			<div className="message__info">
