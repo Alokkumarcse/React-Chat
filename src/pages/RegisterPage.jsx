@@ -12,7 +12,6 @@ import pics from "../images/addAvatar.png";
 
 const Register = () => {
 	const [error, setError] = useState(false);
-	const [errorMessage, setErrorMessage] = useState("");
 	const navigate = useNavigate();
 
 	//handle form submit
@@ -55,7 +54,6 @@ const Register = () => {
 			);
 		} catch (error) {
 			setError(true);
-			console.log(errorMessage);
 		}
 	};
 

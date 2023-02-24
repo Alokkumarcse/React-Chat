@@ -1,18 +1,18 @@
-import React from "react";
-
-import pic from "../images/profile pic.jpg";
+import React, { useContext } from "react";
 
 import MessageContainer from "./MessageContainer";
 import InputBox from "./InputBox";
+import { ChatContext } from "../context/ChatContext";
 
 const ChatPanel = () => {
+	const { data } = useContext(ChatContext);
 	return (
 		<div className="chat__panel">
 			{/* Top part of ChatPanel => info */}
 			<div className="chat__top--panel">
 				<div className="top__panel--left">
-					<img src={pic} alt="" />
-					<span>Alok</span>
+					<img src={data.user?.photoURL} alt="" />
+					<span>{data.user?.displayName}</span>
 				</div>
 				<div className="top__panel--right">
 					<i className="fa-solid fa-phone"></i>
