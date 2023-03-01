@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthContext } from "./context/AuthContext";
 
 import "./styles/style.scss";
@@ -20,7 +20,7 @@ function App() {
 	};
 
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			<Routes>
 				<Route
 					index
@@ -33,7 +33,7 @@ function App() {
 				<Route path="login" element={<LoginPage />} />
 				<Route path="register" element={<RegisterPage />} />
 			</Routes>
-		</BrowserRouter>
+		</HashRouter>
 	);
 }
 
