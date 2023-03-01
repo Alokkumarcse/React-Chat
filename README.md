@@ -1,4 +1,4 @@
-## https://chat-message-react.netlify.app/login
+## https://chat-message-react.netlify.app/#/login
 
 ## Functionality
 ### User can `Register` and `Login` to app using valid credentials
